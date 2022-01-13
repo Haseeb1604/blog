@@ -63,6 +63,12 @@ header .page-heading .subheading{
 /*******************
         Main
  *******************/
+.profile-card{
+    position: sticky;
+    top: 50px;
+    left: 50px;
+}
+
 .card {
     color: #000;
     width: 100%;

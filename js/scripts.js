@@ -1,4 +1,9 @@
-window.addEventListener('DOMContentLoaded', () => {
+let $ = name => {
+    let item = document.querySelectorAll(name);
+    return item.length > 1 ? item : item[0];
+}
+
+let navPositionController = () =>{
     let scrollPos = 0;
     const mainNav = document.getElementById('mainNav');
     const headerHeight = mainNav.clientHeight;
@@ -18,5 +23,8 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         scrollPos = currentTop;
     });
-})
+}
 
+window.addEventListener('DOMContentLoaded', () => {
+    navPositionController();
+})

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .mt{margin-top: 30px;}
+        .d-flex{display: flex;}
+        .justify-content-between{justify-content: space-between;}
+        .flex-row{ flex-direction: row;}
+        .flex-column{ flex-direction: column;}
+        .col2{ 
+            border: 1px solid #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-between mt">
+            <div class="col1">
+                Hello, I am Here
+            </div>
+            <div class="col2">
+                Hello2, I am Here 2
+            </div>
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <p class="col">Hello</p>
+    <p class="col">Hello</p>
+    <p class="col">Hello</p>
+    <p class="col">Hello</p>
+    <p class="col">Hello</p>
+    <script>
+        let cardRect = document.querySelector('.col2').getBoundingClientRect();
+        let _y = cardRect.y
+        let _x = cardRect.left
+
+        let fixedElement = (el, _x, _y) =>{
+            let card = document.querySelector(el);
+            const style = getComputedStyle(card)
+            let windowTop = window.pageYOffset
+            let cardTop = card.offsetTop;
+            console.log(_x, _y)            
+            console.log("windowTop", windowTop," cardTop ", cardTop)            
+            if(windowTop > cardTop){
+                card.style.position = "fixed";
+                card.style.top =  `${_y}px`;
+                card.style.left =  `${_x}px`;
+                card.style.width = style.width;
+            }else if(windowTop <= cardTop){
+                card.style.position = "relative";
+                card.style.top =  "";
+                card.style.left = "";
+                card.style.width = "";
+            }
+        }
+        
+        window.onscroll = () =>{
+            fixedElement('.col2', _x, _y);
+        }
+        
+    </script>
+</body>
+</html>
